@@ -4,5 +4,8 @@
 # Unignore all with extensions
 !*.*
 
+# not ignore lab folder
+!lab*/
+
 .vscode
 *.exe
