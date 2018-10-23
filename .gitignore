@@ -6,6 +6,7 @@
 
 # not ignore lab folder
 !lab*/
+!opengl/
 
 .vscode
 *.exe
