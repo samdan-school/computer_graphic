@@ -158,9 +158,9 @@ void displayMe(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(1.0f, 0.0f, 0.0f);
-    //init_camp_fire();
+    init_camp_fire();
     //next_camp_fire();
-    animate_fire();
+    //animate_fire();
     camp_fire_stick();
 }
 
