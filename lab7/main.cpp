@@ -168,8 +168,8 @@ void displayMe(void) {
 
   // Matrial Gold
   GLfloat mat[4];
-  renderMat(0.24725, 0.1995, 0.0745, 0.75164, 0.60648, 0.22648, 0.628281,
-            0.555802, 0.366065, 0.4);
+  //   renderMat(0.24725, 0.1995, 0.0745, 0.75164, 0.60648, 0.22648, 0.628281,
+  //             0.555802, 0.366065, 0.4);
 
   glBegin(GL_TRIANGLES);
   for (int i = 0; i < vertexFace.size(); i++) {

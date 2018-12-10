@@ -43,6 +43,7 @@ void displayMe(void) {
   glBegin(GL_QUAD_STRIP);
   for (int i = 0; i < 360; i += 2) {
     x = 2;
+
     glVertex3d(x * cos(i * PI / 180), 4, x * sin(i * PI / 180));
     glVertex3d(x + 1 * cos(i + 1 * PI / 180), 4, x * sin(i + 1 * PI / 180));
 
