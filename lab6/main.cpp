@@ -121,7 +121,7 @@ void displayMe(void) {
     glEnd();
 
     glPopMatrix();
-    glFlush();
+    glutSwapBuffers();
 }
 
 void resize(int w, int h) {
@@ -172,14 +172,14 @@ void setup() {
 
 int main(int argc, char **argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(600, 600);
     glutInitWindowPosition(200, 50);
     glutCreateWindow("3d");
     glutReshapeFunc(resize);
     glutDisplayFunc(displayMe);
     glutSpecialFunc(SpecialKeys);
-    //   setup();
+    setup();
     glutMainLoop();
     return 0;
 }
