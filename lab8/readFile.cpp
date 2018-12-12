@@ -1,13 +1,14 @@
 #if !defined(Utilities)
 #define Utilities
 
-#define STB_IMAGE_IMPLEMENTATION
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <string.h>
 #include <iostream>
 #include <vector>
+#define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+// https://www.one-tab.com/page/r2waW4lpRHyraWTgUQSW_A
 
 using namespace std;
 
