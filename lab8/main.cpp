@@ -95,7 +95,7 @@ void resize(int w, int h) {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    gluLookAt(0, 0, -50, 0, 0, 0, 0, 1, 0);
+    gluLookAt(0, 0, 50, 0, 0, 0, 0, 1, 0);
 }
 
 void setup() {
@@ -104,7 +104,7 @@ void setup() {
 
     if (!is_read) {
         ReadFromFile("./Character.obj", vertices, texture, normal, faces);
-        texture_id = LoadBitmap("./Texture.bmp");
+        texture_id = LoadBitmap("./3.bmp");
     }
     // Light values and coordinates
     GLfloat lightPos[] = {0, 200, 0, 1};
