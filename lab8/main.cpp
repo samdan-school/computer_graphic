@@ -22,18 +22,42 @@ void displayMe(void) {
 
   glColor3f(0, 0, 0);
 
-  glBegin(GL_QUAD_STRIP);
-  glTexCoord2f(0, 0);
-  glVertex3f(0, 0, 0);
-
-  glTexCoord2f(0, 1);
-  glVertex3f(10, 0, 0);
-
-  glTexCoord2f(1, 0);
-  glVertex3f(0, 10, 0);
-
-  glTexCoord2f(1, 1);
-  glVertex3f(10, 10, 0);
+  glBegin(GL_QUADS);
+  for(int i = 0; i < faces.size(); ++i) {
+    // calcNormal(faces[i], normal);
+    // glNormal3fv(normal);
+    int j = 0;    
+    glNormal3f(normal[faces[i][j + 2] - 1][0],
+               normal[faces[i][j + 2] - 1][1],
+               normal[faces[i][j + 2] - 1][2]);
+    glVertex3f(vertices[faces[i][j] - 1][0],
+               vertices[faces[i][j] - 1][1],
+               vertices[faces[i][j] - 1][2]); 
+               
+    j += 3;
+    glNormal3f(normal[faces[i][j] - 1][0],
+               normal[faces[i][j] - 1][1],
+               normal[faces[i][j] - 1][2]);
+    glVertex3f(vertices[faces[i][j] - 1][0],
+               vertices[faces[i][j] - 1][1],
+               vertices[faces[i][j] - 1][2]); 
+               
+    j += 3;    
+    glNormal3f(normal[faces[i][j + 2] - 1][0],
+               normal[faces[i][j + 2] - 1][1],
+               normal[faces[i][j + 2] - 1][2]);
+    glVertex3f(vertices[faces[i][j] - 1][0],
+               vertices[faces[i][j] - 1][1],
+               vertices[faces[i][j] - 1][2]);  
+               
+    j += 3;    
+    glNormal3f(normal[faces[i][j + 2] - 1][0],
+               normal[faces[i][j + 2] - 1][1],
+               normal[faces[i][j + 2] - 1][2]);           
+    glVertex3f(vertices[faces[i][j] - 1][0],
+               vertices[faces[i][j] - 1][1],
+               vertices[faces[i][j] - 1][2]); 
+  }
   glEnd();
 
   glPopMatrix();
@@ -59,29 +83,10 @@ void resize(int w, int h) {
 void setup() {
   glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
   glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    
   if (!is_read) {
     ReadFromFile("./Character.obj", vertices, texture, normal, faces);
-
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // load and generate the texture
-    int width, height, nrChannels;
-    unsigned char *data =
-        stbi_load("./Mapping.jpg", &width, &height, &nrChannels, 0);
-    if (data) {
-      glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
-                   GL_UNSIGNED_BYTE, data);
-    } else {
-      std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(data);
-
-    is_read = false;
+    cout << faces.size();
   }
   // Light values and coordinates
   GLfloat lightPos[] = {0, 200, 0, 1};
@@ -114,6 +119,7 @@ void setup() {
 
   // glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
   // glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, local_view);
+  glEnable(GL_TEXTURE_2D);
 }
 
 int main(int argc, char **argv) {
